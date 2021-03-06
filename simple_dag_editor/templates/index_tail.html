@@ -86,7 +86,8 @@ jQuery(document).ready(function() {
                     return {'id': node.id};
                 }
             }
-        }
+        },
+        'plugins' : [ 'sort' ]
     }).on("changed.jstree", function (e, data) {
         open_node(data);
     });
