@@ -17,7 +17,6 @@ class Storage:
     def read(cls, path: str) -> str:
         with open(path, 'r') as f:
             data = f.read()
-            f.close()
         return data
 
     @classmethod
@@ -33,7 +32,6 @@ class Storage:
     def write(cls, path: str, content: str):
         with open(path, 'w') as f:
             f.write(content)
-            f.close()
 
 
 class TreeUtils:

@@ -15,7 +15,7 @@
 #   limitations under the License
 #
 __author__ = 'Ohad Mata <ohadmata@gmail.com>'
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 from flask import Blueprint
 from airflow.plugins_manager import AirflowPlugin
@@ -32,7 +32,8 @@ simple_dag_editor_blueprint = Blueprint(
     static_url_path=STATIC,
 )
 
-class DagEditorPlugin(AirflowPlugin):
+
+class SimpleDagEditor(AirflowPlugin):
     name = 'simple_dag_editor'
     operators = []
     flask_blueprints = [simple_dag_editor_blueprint]
