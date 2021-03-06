@@ -1,0 +1,6 @@
+{% for filename in [
+    'css/style.css',
+    'css/jstree.min.css',
+    'css/editor_v' ~ airflow_major_version ~ '.css' ] -%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dag_editor/' + filename) }}" />
+{% endfor %}

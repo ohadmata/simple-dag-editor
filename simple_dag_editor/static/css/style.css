@@ -1,0 +1,13 @@
+.code-panel{
+    padding: 0 !important;
+}
+
+.explorer-panel{
+    height:760px;
+    overflow: auto;
+}
+
+.path-label{
+    float: right;
+    font-size: 13px;
+}

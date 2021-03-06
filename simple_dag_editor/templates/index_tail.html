@@ -1,0 +1,162 @@
+{% for filename in [
+    'js/ace.min.js',
+    'js/mode-python.min.js',
+    'js/jstree.min.js',
+    'js/sweetalert2.all.min.js'
+] -%}
+<script src="{{ url_for('static', filename='dag_editor/' + filename) }}"></script>
+{% endfor %}
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+    let selected_path = '';
+    let editor = ace.edit("editor");
+    let tree = $('#jstree');
+
+    $(".btn").attr("disabled", true);
+
+    editor.session.setMode("ace/mode/python");
+    editor.setOptions({
+        fontSize: "14px"
+    });
+
+    $('.save-btn').click(function(){
+        Swal.fire({
+            title: 'Are you sure',
+            text: 'You are going to overwrite a DAG file: ' + selected_path,
+            icon: 'question',
+            confirmButtonText: 'Yes, Overwrite!',
+            denyButtonText: 'No',
+            showDenyButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                save_file(selected_path, editor.getValue());
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+            }
+        });
+    });
+
+    $('.save-as-btn').click(function(){
+        Swal.fire({
+            inputValue: suggested_path(selected_path),
+            title: 'Save As you DAG file',
+            inputLabel: 'Choose your new path',
+            input: 'text',
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                save_file(result.value, editor.getValue());
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+            }
+        });
+    });
+
+    $('.reload-btn').click(function(){
+        get_file_content(selected_path);
+    });
+
+    $('.delete-btn').click(function(){
+        Swal.fire({
+            title: 'Are you sure',
+            text: 'You are going to delete a DAG file: ' + selected_path,
+            icon: 'question',
+            confirmButtonText: 'Yes, Delete!',
+            denyButtonText: 'No',
+            showDenyButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                delete_file(selected_path);
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info');
+            }
+        });
+    });
+
+    tree.jstree({
+        'core' : {
+            'data': {
+                'url': function (node) {
+                    return node.id === '#' ?
+                        'files' : 'files';
+                },
+                'data': function (node) {
+                    return {'id': node.id};
+                }
+            }
+        }
+    }).on("changed.jstree", function (e, data) {
+        open_node(data);
+    });
+
+    function suggested_path(path){
+        if(path.includes('.')){
+            return path.replace('.', '_copy.')
+        } else {
+            return path + '_copy'
+        }
+    }
+
+    function open_node(data){
+        if (typeof data.node === 'undefined') {
+            return
+        }
+        if(data.node.icon === 'jstree-file'){
+            get_file_content(data.node.id)
+        }
+    }
+
+    function save_file(path, data){
+        $.ajax({
+            type: "POST",
+            url: "save",
+            data: JSON.stringify({path: path, data: data}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(result){
+                if(result.status === 'ok'){
+                    Swal.fire('File saved!', '', 'success');
+                       tree.jstree("refresh");
+                } else {
+                    Swal.fire('Could not save file!', '', 'error');
+                }
+            }}
+        );
+    }
+
+    function delete_file(path){
+        $.ajax({
+            type: "POST",
+            url: "delete",
+            data: JSON.stringify({path: path}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(result){
+                if(result.status === 'ok'){
+                    Swal.fire('File deleted', '', 'success');
+                       tree.jstree("refresh");
+                } else {
+                    Swal.fire('Could not delete file!', '', 'error');
+                }
+            }}
+        );
+    }
+
+    function get_file_content(path){
+        $.ajax({
+            type: "GET",
+            url: "read?path=" + path,
+            success: function(result){
+                if(result.status === 'ok'){
+                    editor.setValue(result.data);
+                    $('.path-label').html(path);
+                    selected_path = path;
+                    $(".btn").attr("disabled", false);
+                }
+            }}
+        );
+    }
+});
+</script>
