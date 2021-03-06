@@ -20,8 +20,9 @@ With this plugin you will be able to delete, duplicate & edit you dags.
     
 ### Screenshots
 
-![Main editor screen](screenshots/image1.png?raw=true "Main editor screen")
-![Save as modal](screenshots/image2.png?raw=true "Save as modal")
-![Save confirm](screenshots/image3.png?raw=true "Save confirm")
+
+![Main editor screen](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image1.png)
+![Save as modal](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image2.png)
+![Save confirm](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image3.png)
 
 
