@@ -10,6 +10,11 @@ With this plugin you will be able to delete, duplicate & edit you dags.
     
 ### Screenshots
 
+![Main editor screen](screenshots/image1.png?raw=true "Main editor screen")
+![Save as modal](screenshots/image2.png?raw=true "Save as modal")
+![Save confirm](screenshots/image3.png?raw=true "Save confirm")
+
+
 ### Manual Installation
 1. Copy 'simple_dag_editor' folder into your plugins directory
 2. Restart airflow instance
