@@ -25,4 +25,5 @@ With this plugin you will be able to delete, duplicate & edit you dags.
 ![Save as modal](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image2.png)
 ![Save confirm](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image3.png)
 
-
+### Optional configurations
+* [dag_editor] - disabled (Default - False)
