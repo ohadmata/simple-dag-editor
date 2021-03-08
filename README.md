@@ -17,6 +17,9 @@ With this plugin you will be able to delete, duplicate & edit you dags.
 1. Install the plugin (pip install simple-dag-editor)
 2. Restart airflow instance
 3. Open Admin - Simple DAG editor
+
+### Optional configurations
+* [dag_editor] - disabled (Default - False)
     
 ### Screenshots
 
@@ -25,5 +28,3 @@ With this plugin you will be able to delete, duplicate & edit you dags.
 ![Save as modal](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image2.png)
 ![Save confirm](https://raw.githubusercontent.com/ohadmata/simple-dag-editor/main/screenshots/image3.png)
 
-### Optional configurations
-* [dag_editor] - disabled (Default - False)
