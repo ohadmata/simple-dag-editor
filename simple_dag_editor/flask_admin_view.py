@@ -2,7 +2,6 @@ import airflow
 from airflow import configuration
 from airflow.version import version
 from functools import wraps
-from flask_admin import BaseView, expose
 from flask import jsonify, request
 from simple_dag_editor.commons import ROUTE, MENU_CATEGORY, MENU_LABEL
 from simple_dag_editor.utils import Storage, TreeUtils
@@ -10,6 +9,7 @@ from simple_dag_editor.utils import Storage, TreeUtils
 __all__ = ["admin_view"]
 
 try:
+    from flask_admin import BaseView, expose
     AIRFLOW_MAJOR_VERSION = int(version.split('.')[0])
 
     def login_required(func):

@@ -1,6 +1,6 @@
 # simple-dag-editor changelog
 
-## 0.0.5
+## 0.0.6
 
 2021-03-06
 

@@ -15,7 +15,7 @@
 #   limitations under the License
 #
 __author__ = 'Ohad Mata <ohadmata@gmail.com>'
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 from flask import Blueprint
 from airflow.plugins_manager import AirflowPlugin
