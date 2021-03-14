@@ -1,0 +1,16 @@
+
+{% extends 'appbuilder/general/model/list.html' %}
+
+{% block head_css %}
+{{ super() }}
+{% include "index_head.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "index_body.html" %}
+{% endblock %}
+
+{% block tail %}
+{{ super() }}
+{% include "index_tail.html" %}
+{% endblock %}

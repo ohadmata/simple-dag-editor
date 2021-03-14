@@ -10,15 +10,10 @@ With this plugin you will be able to delete, duplicate & edit you dags.
 
 ### System Requirements
 
-* Airflow 1.10.x
-* Not tested for Airflow 2.x
+* Airflow >= 1.10.2
+* Python 3.7+
 
-### Manual Installation
-1. Copy 'simple_dag_editor' folder into your plugins directory
-2. Restart airflow instance
-3. Open Admin - Simple DAG editor
-
-### Package Installation
+### Installation
 1. Install the plugin (pip install simple-dag-editor)
 2. Restart airflow instance
 3. Open Admin - Simple DAG editor

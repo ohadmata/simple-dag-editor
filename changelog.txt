@@ -1,9 +1,13 @@
 # simple-dag-editor changelog
 
-## 0.0.6
+## 0.1.0
+2021-03-14
 
+- Airflow 2.X support
+- Vertical separator removed from the editor
+
+## 0.1.0
 2021-03-06
 
-### Added
 - initial version
 

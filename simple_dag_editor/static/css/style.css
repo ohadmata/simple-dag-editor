@@ -1,9 +1,14 @@
+.editor_container{
+    padding-top: 15px;
+    padding-bottom: 0;
+}
+
 .code-panel{
     padding: 0 !important;
 }
 
 .explorer-panel{
-    height:760px;
+    height:660px;
     overflow: auto;
 }
 

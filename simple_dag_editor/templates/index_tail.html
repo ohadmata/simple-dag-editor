@@ -17,6 +17,7 @@ jQuery(document).ready(function() {
     $(".btn").attr("disabled", true);
 
     editor.session.setMode("ace/mode/python");
+    editor.setShowPrintMargin(false);
     editor.setOptions({
         fontSize: "14px"
     });

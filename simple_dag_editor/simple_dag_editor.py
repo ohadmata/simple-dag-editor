@@ -15,13 +15,14 @@
 #   limitations under the License
 #
 __author__ = 'Ohad Mata <ohadmata@gmail.com>'
-__version__ = '0.0.6'
+__version__ = '0.1.0'
 
 from flask import Blueprint
 from airflow.plugins_manager import AirflowPlugin
 from airflow import configuration
 from simple_dag_editor.commons import STATIC
 from simple_dag_editor.flask_admin_view import admin_view
+from simple_dag_editor.app_builder_view import appbuilder_view
 
 __all__ = ['SimpleDagEditor']
 
@@ -34,22 +35,18 @@ simple_dag_editor_blueprint = Blueprint(
 )
 
 
-class DagEditorPlugin(AirflowPlugin):
+class SimpleDagEditor(AirflowPlugin):
+    name = 'simple_dag_editor'
+    operators = []
+    hooks = []
+    executors = []
+    menu_links = []
+
     if configuration.getboolean('dag_editor', 'DISABLED', fallback=False):
-        name = 'simple_dag_editor'
-        operators = []
         flask_blueprints = []
-        hooks = []
-        executors = []
         admin_views = []
-        menu_links = []
         appbuilder_views = []
     else:
-        name = 'simple_dag_editor'
-        operators = []
         flask_blueprints = [simple_dag_editor_blueprint]
-        hooks = []
-        executors = []
         admin_views = [admin_view] if admin_view is not None else []
-        menu_links = []
-        appbuilder_views = []
+        appbuilder_views = [appbuilder_view]

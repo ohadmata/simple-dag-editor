@@ -8,6 +8,8 @@ from simple_dag_editor.utils import Storage, TreeUtils
 
 __all__ = ["admin_view"]
 
+# AppBuilder (Airflow < 2.0)
+
 try:
     from flask_admin import BaseView, expose
     AIRFLOW_MAJOR_VERSION = int(version.split('.')[0])
