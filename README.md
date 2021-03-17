@@ -8,6 +8,11 @@ SimpleDagEditor is a zero configuration plugin for [Apache Airflow](https://gith
 It provides a file managing interface that points to your dag_folder directory.
 With this plugin you will be able to delete, duplicate & edit you dags.
 
+### Use-cases
+* This plugin has been developed for a native deployment, where the Airflow webserver & scheduler are sharing the same dag_folder directory (as a mount).
+* The plugin is not designed for deployments that synchronize the dag_folder from a remote source (Git/S3)
+* You have the ability to disable the plugin for production env (see conf section)
+
 ### System Requirements
 
 * Airflow >= 1.10.2
